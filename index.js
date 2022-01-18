@@ -29,7 +29,7 @@ app.post('/', (req, res) => {
   if (List != []) {
     for (let i in List) {
       if (List[i].Name != "" && List[i].Email != "" ) {
-        pool.query(`INSERT INTO salesforce.List__c(Name__c,Email__c) VALUES ($1,$2)  ON CONFLICT (Email__c) DO NOTHING`, [`${List[i].UserName}`, `${List[i].Email}`]);
+        pool.query(`INSERT INTO salesforce.List__c(Name__c,Email__c) VALUES ($1,$2)  ON CONFLICT (Email__c) DO NOTHING`, [`${List[i].Name}`, `${List[i].Email}`]);
       }
       else {
         console.log('No Orders Found to sync');
